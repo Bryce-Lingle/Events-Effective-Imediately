@@ -8,5 +8,11 @@ This webpage was created by Bryce Lingle. If you ahve questions or comments, ple
 
 ## Image
 ![](Assets/Screenshot.png)
+
+
 ## Links
+Come see my page!
+
+
+Come see my gitHub!
 
