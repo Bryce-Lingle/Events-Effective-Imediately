@@ -4,9 +4,8 @@
 var todaysDate = document.getElementById('currentDay')
 var saveBtn = $('.saveBtn')
 var plan = $('#text-area')
-var blockHour = $()
+//var blockHour; 
 var currentHour = dayjs().format()
-
 
 
 //Display todays date
@@ -16,8 +15,9 @@ $('#currentDay').text(todaysDate.format('dddd, MMMM D, YYYY'))
 
 $(function () {
   saveBtn.on('click', function() {
-    var plan = $('#text-area').val();
-    localStorage.setItem('',plan);
+    var plan = $(this).siblings('#text-area').val();
+    var key = $(this).parent().attr('id')
+    localStorage.setItem(key,plan);
     console.log(plan)
   })
   // TODO: Add a listener for click events on the save button. This code should
@@ -36,25 +36,28 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //For day js - dayjs().hour()
-
-  //THIS IS THE IF ELSE FOR CLASSES, I NEED TO SEE IF IT WILL WORK OR NOT LATER
-  if (blockHour < currentTime) {
+$('.time-block').each(function (){
+  var blockHour = parseInt($(this).attr('id').split('-')[1]);
+  var currentTime = dayjs().hour(); 
+  // var blockHour = $(this).attr('id').split('-')[1]
+ if (blockHour < currentTime) {
     $(this).removeClass("present future") .addClass('past');
   } else if (blockHour === currentTime){
     $(this).removeClass('future past').addClass('present');
   }else if (blockHour > currentTime) {
     $(this).removeClass('past present').addClass('future');
   }
-
-
- var currentTime = dayjs().hour();{
-console.log(currentTime)
- }
+  // console.log(blockHour)
+  // console.log(currentTime)
+})  
+ 
+  //THIS IS THE IF ELSE FOR CLASSES, I NEED TO SEE IF IT WILL WORK OR NOT LATER
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-localStorage.getItem('',plan);
+
+$('#hour-9 #text-area').val(localStorage.getItem('hour-9'))
 
 });
 
