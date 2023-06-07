@@ -12,7 +12,8 @@ This webpage was created by Bryce Lingle. If you ahve questions or comments, ple
 
 ## Links
 Come see my page!
-
+https://bryce-lingle.github.io/Events-Effective-Immediately/ 
 
 Come see my gitHub!
+https://github.com/Bryce-Lingle/Events-Effective-Immediately 
 
