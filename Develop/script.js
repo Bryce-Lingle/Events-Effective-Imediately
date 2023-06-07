@@ -1,18 +1,16 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 var todaysDate = document.getElementById('currentDay')
 var saveBtn = $('.saveBtn')
 var plan = $('#text-area') 
 var currentHour = dayjs().format()
 
 
-//Display todays date
+//This Displays todays date at the top of the page
 var todaysDate = dayjs();
 $('#currentDay').text(todaysDate.format('dddd, MMMM D, YYYY'))
 
 
 $(function () {
+  //This is te save button funciton that sets plan (which is tied to the specfic id of text-area, and the key value which is specifically tied to its parent attribute of id and saves the value inputed to local storage.)
   saveBtn.on('click', function() {
     var plan = $(this).siblings('#text-area').val();
     var key = $(this).parent().attr('id')
@@ -21,9 +19,14 @@ $(function () {
   })
 
 $('.time-block').each(function (){
+  //variable tied to turning each string number (hour - 9) and turning the number into an intiger. The string also needed to be split in order to specifically define the number.
   var blockHour = parseInt($(this).attr('id').split('-')[1]);
+  //The varaible tied to the current hour on a 24 hour clock. 
   var currentTime = dayjs().hour(); 
+  // This is the code for turing the number into text rather than part of an array and tying making it an intiger
   // var blockHour = $(this).attr('id').split('-')[1]
+
+  //This is the code for changing the background color based on current time (defined above) and block hour (defined above)
  if (blockHour < currentTime) {
     $(this).removeClass("present future") .addClass('past');
   } else if (blockHour === currentTime){
@@ -35,11 +38,7 @@ $('.time-block').each(function (){
   // console.log(currentTime)
 })  
  
-  //THIS IS THE IF ELSE FOR CLASSES, I NEED TO SEE IF IT WILL WORK OR NOT LATER
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+//This is the code that gets each value inputed to local storge previously. It is tied to the ID in each div, then dives futher to spcify the ID text area within that hour block. 
 
 $('#hour-9 #text-area').val(localStorage.getItem('hour-9'))
 
